@@ -132,7 +132,8 @@ def outliers_z_score(df, columns='all_the_columns', mode='print'):
             
             if outliers_with_z.shape[0]!=0:
                 print( outliers_with_z )
-                print('---------------------------------')
+                
+            print('---------------------------------')
             
 #############################################################################################
 
@@ -200,7 +201,8 @@ def outliers_IQR(df, columns='all_the_columns', mode='print'):
             
             if outliers_with_IQR.shape[0]!=0:
                 print( outliers_with_IQR )
-                print('---------------------------------')
+                
+            print('---------------------------------')
     
 ####################################################################################
 
@@ -257,7 +259,7 @@ def analysis_quant(df, columns='all_the_columns', figsize=(20,7), dpi=120):
         outliers_IQR(df, column)      
 
         ###PLOTTING###
-        fig, axes =  plt_subplots(1, 2, figsize=figsize, dpi=dpi)
+        fig, axes = plt_subplots(1, 2, sharex=True, figsize=figsize, dpi=dpi)
         # boxplot
         sns_boxplot(ax=axes[0] , x=feature)  
         # histogram
@@ -316,7 +318,7 @@ def analysis_cate(df, columns='all_the_columns', figsize=(20,7), dpi=120, force=
                 print(f'The feature "{column}" might be numerical. Please try the "analysis_quant" function.\nIncase you want to proceed anyways, set "force" parameter to True.\n(Caution!!! May cause memory leak.)')
                 print('______________________________________________________________________________________________________')
                 continue
-        
+                
         if force==True:
             print(f'The feature "{column}" might be numerical. Proceeding anyways.')
         
